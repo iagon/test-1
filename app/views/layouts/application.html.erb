@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blog</title>
+  
+<title>Blog</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
 <div id="main_content">
 <div id="header">
 
 
+
+<%if user_signed_in? %>
   <div class="buttons">
       <button class="button">
         <%= link_to "New Post", new_post_path %>
       </button>
-      <button class="button"> Log Out</button>
-      </div>
+     
+      <button class="button">  Log Out</button>
+    </div>
+      <% end %>
   </div>
-  
+   <button class="button"> <%= link_to "Home", root_path %></button>
 
   <%= yield %>
 </div>
+
+<% flash.each do |name, msg| %>
+  <%= content_tag(:div, msg, class: "alert") %>
+<% end %>
 
 
 </body>
