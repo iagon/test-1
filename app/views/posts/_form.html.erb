@@ -1,6 +1,4 @@
-<h1>new post</h1>
-
-<%= form_for @post do |f| %>
+<%= form_for :post, url: posts_path do |f| %>
 
   <% if @post.errors.any? %>
       <div id="errors">
@@ -23,4 +21,3 @@
     <%= f.submit %>
   </p>
 
-<%end%>
